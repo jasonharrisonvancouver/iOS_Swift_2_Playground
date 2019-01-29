@@ -8,24 +8,38 @@
  Declare a optional Double value and set it to nil.
  */
 
+var iq : Double? = nil
+
 
 /*:
  - Experiment:
  Assign a value your optional Double.
  */
-
+iq = 99.9
+iq = nil
 
 /*:
  - Experiment:
  Force unwrap the optional value. Why do you have to be careful about force unwrapping?
  */
 
+//if let myDouble :Double = iq!{
+//    print("got the double \(myDouble)")
+//}else{
+//    print("no double")
+//}
+
+
 
 /*:
  - Experiment:
  Use conditional unwrapping to verify if the optional has a value. Print the value if there is something, otherwise, print out to indicate there is no value present. Why is conditional unwrapping better than force unwrapping?
  */
-
+if let myDouble :Double = iq{
+    print("got the double \(myDouble)")
+}else{
+    print("no double")
+}
 
 /*:
  - Callout(Challenge):
@@ -34,26 +48,67 @@
 var testData: [String?] = ["Heather", nil, "Mike", "John", nil, nil, "Bob"]
 
 
+
+func removeNils(array : [String?]) -> [String?]{
+    var newArray : [String?]=[String?]()
+    
+    for string in array {
+        if let oneString = string{
+            newArray.append(oneString)
+        }
+    }
+    return newArray
+}
+
+print(removeNils(array: testData))
+
 /*:
  - Callout(Challenge):
  We want to write a function that validates form data filled in by a user. Once we encounter the first field that is blank, we want to indicate to the user that the field is blank.
  If the user has filled in everything correctly, we want to print all information out.
  Below is some test data you can use to test your function.
  */
+
+
+func validateUserPassEmail(username : String?, password : String?, email : String?) -> Bool{
+    if let username = username {
+        if let password = password{
+            if let email = email{
+                print("valid username \(username), password \(password), and email \(email)")
+                return true
+            }else{
+                print("bad email \(email)")
+                return false
+            }
+        } else {
+            print("bad password \(password)")
+            return false
+        }
+    }else{
+        print("bad username \(username)")
+        return false
+    }
+}
+
 // Should pass all checks and print all information
-let username: String? = "user1"
-let password: String? = "password123"
-let email: String? = "user1@lighthouselabs.ca"
+//let username: String? = "user1"
+//let password: String? = "password123"
+//let email: String? = "user1@lighthouselabs.ca"
+
 
 // Should stop at password check and indicate password field is empty
 //let username: String? = "user1"
 //let password: String? = nil
 //let email: String? = "user1@lighthouselabs.ca"
 
+//validateUserPassEmail(username: username, password: password, email: email)
+
+
 // Should stop at username check and indicate username field is empty
-//let username: String? = nil
-//let password: String? = nil
-//let email: String? = "user1@lighthouselabs.ca"
+let username: String? = nil
+let password: String? = nil
+let email: String? = "user1@lighthouselabs.ca"
+validateUserPassEmail(username: username, password: password, email: email)
 
 
 

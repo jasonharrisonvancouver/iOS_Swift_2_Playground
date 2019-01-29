@@ -142,10 +142,34 @@ isMyNumberANegativeValue(myNumber: myNumber)
  */
 
 
+func sendEmail(emailAddress:String?) -> Bool{
+    guard let emailAddr = emailAddress, emailAddr.contains("@") else{
+        print ("email address is invalid \(emailAddress ?? "email address")")
+        return false
+    }
+    print("sending email to \(String(describing: emailAddress))")
+    return true
+}
+sendEmail(emailAddress: nil)
+sendEmail(emailAddress: "hello")
+sendEmail(emailAddress: "what@ever")
+
 /*:
  - Experiment:
  Create a function that takes in two number parameters and divide them. We don't like dividing by zero, so ensure this doesn't happen. Otherwise, return the calculated value.
  */
+
+
+func divide(dividend : Float, divisor : Float) -> Float?{
+    guard divisor != 0 else{
+        print("cannot divide by zero")
+        return nil
+    }
+    return dividend / divisor
+}
+
+print("quotient is \(String(describing: divide(dividend :5, divisor: 4)))")
+print("quotient is \(String(describing: divide(dividend :5, divisor: 0)))")
 
 
 /*:
@@ -179,6 +203,33 @@ isMyNumberAnOptional(myOptionalNumber: myOptionalNumber)
  Create a function that takes in an array of numbers. Have the function add all the numbers together and return the result. Make sure to `guard` against an empty array. Use `array.first` to check if there is at least one value in the array.
  */
 
+
+
+func sumArrayElements(numberArray: [Double?]?) -> Double?{
+    guard let numArray = numberArray, let firstNum = numArray.first else{
+        print("error with array or first element")
+        return nil
+    }
+    print("array looks good \(numArray) with first element \(firstNum)")
+    
+    var sum : Double = 0.0
+    
+    for d in numArray {
+        sum = sum + d!
+    }
+    return sum
+}
+
+var doubles: [Double] = [Double]()
+doubles.append(5)
+doubles.append(5)
+doubles.append(5)
+doubles.append(5)
+doubles.append(5)
+doubles.append(5)
+doubles.append(5)
+
+print(sumArrayElements(numberArray: nil))
 
 /*:
  - Callout(Challenge):

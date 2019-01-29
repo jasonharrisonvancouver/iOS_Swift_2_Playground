@@ -49,8 +49,8 @@ var testData: [String?] = ["Heather", nil, "Mike", "John", nil, nil, "Bob"]
 
 
 
-func removeNils(array : [String?]) -> [String?]{
-    var newArray : [String?]=[String?]()
+func removeNils(array : [String?]) -> [String]{
+    var newArray: [String] = [String]()
     
     for string in array {
         if let oneString = string{

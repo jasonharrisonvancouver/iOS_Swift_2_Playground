@@ -23,12 +23,22 @@ default:
 
 /*:
  - Experiment:
- Use the below switch statement to test the following cases. What do they do? Try changing the value of `diceRoll` to see what happens!
- - case (_, 1)
- - case (2, _)
- - case (1...3, 1...3)
- - case (let x, let y) where x == y
- */
+ Use the below switch statement to test the following cases. What do they do? Try changing the value of `diceRoll` to see what happens!*/
+
+let roll = (3, 2)
+
+switch roll{
+case (_, 1):
+    print("something, 1")
+case (2, _):
+    print("2, something")
+case (1...3, 1...3):
+    print("1-3, 1-3")
+case (let x, let y) where x == y:
+    print("first = second")
+default:
+    print("other")
+}
 
 
 /*:
@@ -40,6 +50,21 @@ default:
  - Halloween Day - Oct 31
  - Otherwise, indiciate the given day is not a holiday
  */
+let day = ("Dec", 1)
+switch day{
+case ("Dec", 25):
+    print("xmas")
+case ("Jan", 1):
+    print("new years")
+case (_, 1):
+    print("first day of the month")
+case ("Feb", 14):
+    print("valentine's")
+case ("Oct", 31):
+    print("halloween")
+default:
+    print("not a special day")
+}
 
 
 /*:
@@ -55,5 +80,15 @@ default:
  - point is outside the blue outlined box
  */
 
+
+let xyCoordinate = (0, 17)
+switch xyCoordinate{
+case (_, 0):
+    print("x axis")
+case (0, _):
+    print("y axis")
+default:
+    print("not axis")
+}
 
 //: [Next](@next)

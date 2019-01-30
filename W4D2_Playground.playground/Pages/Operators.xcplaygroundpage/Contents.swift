@@ -47,6 +47,17 @@ let combinedValues = "abc" + 123
  */
 
 
+func * (left: String, right: Int) -> String{
+    var string: String = left;
+    
+    for _ in 1 ..< right{
+        string = string + left
+    }
+    return string
+}
+
+print("jason" * 5)
+
 /*:
  - Experiment:
  You can also overload the operators within an extension so it only affects this type. Add your own overload operators and you can even change the behaviour of existing ones. A `static` keyword is required for the functions and lie within the extension.
@@ -58,10 +69,10 @@ let combinedValues = "abc" + 123
 extension Int {
   
   // Comment this function in to try it!
-  //    static func + (left: Int, right: Int) -> Int{
-  //
-  //        return left - right
-  //    }
+      static func + (left: Int, right: Int) -> Int{
+  
+          return left - right
+      }
 }
 
 
@@ -86,6 +97,19 @@ var incrementTwo = incrementOne+++
  - Experiment:
  Create your own custom operator using the square root symbol here: √
  */
+
+postfix operator √
+postfix func √ (string: String) -> String {
+    
+    let length: Double = (Double)(string.count)
+    let sqrtLength = sqrt(length)
+    let len: Int = (Int)(sqrtLength.rounded())
+    
+    return (String)(string.prefix(len))
+}
+
+print("hello world"√)
+
 
 
 /*:
